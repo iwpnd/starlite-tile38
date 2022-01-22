@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "starlite-tile38"
+version = "0.1.0"
+description = "Starlite API do interact with Tile38"
+authors = ["Benjamin Ramser <legionaerr@googlemail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+starlite = "^0.6.0"
+uvicorn = "^0.17.0"
+pyle38 = "^0.6.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2"
+pre-commit = "^2.15.0"
+black = "^21.8b0"
+gitlint = "^0.15.0"
+poethepoet = "^0.10.0"
+isort = "^5.9.3"
+pytest-cov = "^2.12.1"
+flake8 = "^3.9.2"
+pytest-asyncio = "^0.15.1"
+mypy = "^0.910"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[mypy]
+python_version = 3.8
+ignore_missing_imports = true
+
+[tool.poe.tasks]
+test       = "poetry run pytest -vv -s src/tests/"
+test-cov   = "poetry run pytest -vv -s --cov=starlite-tile38 src/tests/"
+mypy       = "poetry run mypy --ignore-missing-imports --config-file pyproject.toml"
+lint       = "flake8 ."
+up         = "docker-compose up"
+down       = "docker-compose down"
+
