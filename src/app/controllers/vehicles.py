@@ -1,12 +1,14 @@
-from typing import List
-
-from pydantic import UUID4
 from pyle38.errors import Tile38IdNotFoundError, Tile38KeyNotFoundError
-from pyle38.responses import ObjectResponse
-from starlette.status import HTTP_404_NOT_FOUND
-from starlite import Controller, HTTPException, delete, get, post, put
+from pyle38.responses import ObjectResponse, ObjectsResponse
+from starlette.status import HTTP_201_CREATED, HTTP_404_NOT_FOUND
+from starlite import Controller, HTTPException, get, post
 
-from app.models.vehicle import Vehicle, VehicleResponse
+from app.models.vehicle import (
+    Vehicle,
+    VehicleRequestBody,
+    VehicleResponse,
+    VehiclesResponse,
+)
 from app.services.tile38 import tile38
 
 
@@ -14,20 +16,24 @@ class VehicleController(Controller):
     path = "/vehicles"
     collection = "fleet"
 
-    @post()
-    async def create_vehicle(self, data: Vehicle) -> Vehicle:
-        ...
+    @post(status_code=HTTP_201_CREATED)
+    async def upsert_vehicle(self, data: VehicleRequestBody) -> VehicleResponse:
+        vehicle = data.data
+        vehicle_id = vehicle.properties.id
+        await tile38.set(self.collection, vehicle_id).object(vehicle.dict()).exec()
+
+        return VehicleResponse(**{"data": vehicle})
 
     @get()
-    async def list_vehicles(self) -> List[Vehicle]:
-        ...
+    async def list_vehicles(self) -> VehiclesResponse:
+        vehicles: ObjectsResponse[Vehicle] = await tile38.scan(
+            self.collection
+        ).asObjects()
 
-    @put(path="/{vehicle_id:uuid}")
-    async def update_vehicle(self, vehicle_id: UUID4, data: Vehicle) -> Vehicle:
-        ...
+        return VehiclesResponse(**{"data": [o.object for o in vehicles.objects]})
 
-    @get(path="/{vehicle_id:uuid}")
-    async def get_vehicle(self, vehicle_id: UUID4) -> VehicleResponse:
+    @get(path="/{vehicle_id:str}")
+    async def get_vehicle(self, vehicle_id: str) -> VehicleResponse:
         try:
             vehicle: ObjectResponse[Vehicle] = await tile38.get(
                 self.collection, vehicle_id
@@ -39,9 +45,5 @@ class VehicleController(Controller):
         except (Tile38KeyNotFoundError, Tile38IdNotFoundError):
             raise HTTPException(
                 status_code=HTTP_404_NOT_FOUND,
-                detail=f"vehicle with id '{id}' not found",
+                detail=f"vehicle with id '{vehicle_id}' not found",
             )
-
-    @delete(path="/{vehicle_id:uuid}")
-    async def delete_vehicle(self, vehicle_id: UUID4) -> Vehicle:
-        ...

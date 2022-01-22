@@ -1,6 +1,6 @@
-from typing import List, Optional
+from typing import List
 
-from pydantic import UUID4, BaseModel, Field
+from pydantic import BaseModel, Field
 
 
 class Geometry(BaseModel):
@@ -9,7 +9,7 @@ class Geometry(BaseModel):
 
 
 class Properties(BaseModel):
-    id: UUID4
+    id: str
 
 
 class Vehicle(BaseModel):
@@ -22,15 +22,9 @@ class VehicleRequestBody(BaseModel):
     data: Vehicle
 
 
-class VehicleObject(BaseModel):
-    id: UUID4
-    object: Vehicle
-    distance: Optional[float] = None
-
-
 class VehicleResponse(BaseModel):
     data: Vehicle
 
 
 class VehiclesResponse(BaseModel):
-    data: List[VehicleObject]
+    data: List[Vehicle]
