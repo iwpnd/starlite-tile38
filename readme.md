@@ -76,21 +76,36 @@ Once the application is started you can checkout and interact with it via on [lo
 
 Or you can use it with [http](https://httpie.io/)/[curl](https://curl.se/):
 
+### Create a vehicle
+
 ```sh
 echo '{ "data": { "type": "Feature", "geometry": {"type": "Point", "coordinates": [13.37, 52.25]}, "properties": {"id": "truck"}}}' \
       | http post http://localhost:8001/vehicles
 
 > {data:"type":"Feature","geometry":{"type":"Point","coordinates":[13.37, 52.25]},"properties":{"id":"truck"}}
+```
 
-
+### Get vehicle by id
+```sh
 http get http://localhost:8001/vehicles/truck
 
 > {data:"type":"Feature","geometry":{"type":"Point","coordinates":[13.37, 52.25]},"properties":{"id":"truck"}}
+```
 
+### Get all vehicles
+```
 http get http://localhost:8001/vehicles
 
 > { data: ["type":"Feature","geometry":{"type": "Point", "coordinates": [13.37, 52.25]},"properties":{"id":"truck"}]}
 ```
+
+### Get vehicles within radius
+```
+http get http://localhost:8001/search?lat=13.37&lon=52.25&radius=1000
+
+> { data: ["type":"Feature","geometry":{"type": "Point", "coordinates": [13.37, 52.25]},"properties":{"id":"truck"}]}
+```
+
 
 Or you use it with [httpx](https://www.python-httpx.org/)/[requests](https://docs.python-requests.org/en/master/):
 
