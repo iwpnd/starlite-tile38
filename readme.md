@@ -1,13 +1,13 @@
 <br />
 <p align="center">
-  <h3 align="center">FastAPI-Tile38</h3>
+  <h3 align="center">Starlite-Tile38</h3>
 
   <p align="center">
-    Showcase using Tile38 via pyle38 in a FastAPI application.
+    Showcase using Tile38 via pyle38 in a Starlite application.
     <br />
-    <a href="https://github.com/iwpnd/fastapi-tile38/issues">Report Bug</a>
+    <a href="https://github.com/iwpnd/starlite-tile38/issues">Report Bug</a>
     ·
-    <a href="https://github.com/iwpnd/fastapi-tile38/issues">Request Feature</a>
+    <a href="https://github.com/iwpnd/starlite-tile38/issues">Request Feature</a>
   </p>
 </p>
 
@@ -37,15 +37,14 @@
 
 ## About The Project
 
-Showcase of using [Tile38](https://github.com/tidwall/tile38) with [Pyle38](https://github.com/iwpnd/pyle38) in a [FastAPI](https://github.com/tiangolo/fastapi)
+Showcase of using [Tile38](https://github.com/tidwall/tile38) with [Pyle38](https://github.com/iwpnd/pyle38) in a [Starlite](https://github.com/starlite-api/starlite)
 application. Can be used as is, or be extended upon with other methods in the [pyle38 repertoire](https://github.com/iwpnd/pyle38#commands) of commands.
 
 ### Built With
 
--   [FastAPI](https://github.com/tiangolo/fastapi)
+-   [Starlite](https://github.com/starlite-api/starlite)
 -   [Pyle38](https://github.com/iwpnd/pyle38)
 -   [Tile38](https://github.com/tidwall/tile38)
--   [pydantic](https://github.com/samuelcolvin/pydantic/)
 
 <!-- GETTING STARTED -->
 
@@ -55,12 +54,12 @@ application. Can be used as is, or be extended upon with other methods in the [p
 
 1. Clone and install
     ```sh
-    git clone https://github.com/iwpnd/fastapi-tile38.git
+    git clone https://github.com/iwpnd/starlite-tile38.git
     poetry install
     ```
 2. Setup environment
     ```sh
-    cp .env.dist .env
+    TODO
     ```
 3. Start your local stack
     ```python
@@ -73,43 +72,24 @@ application. Can be used as is, or be extended upon with other methods in the [p
 
 ## Usage
 
-Once the application is started you can checkout and interact with it via on [localhost:8001/docs](http://localhost:8001/docs).
+Once the application is started you can checkout and interact with it via on [localhost:8001/schema/redoc](http://localhost:8001/schema/redoc).
 
 Or you can use it with [http](https://httpie.io/)/[curl](https://curl.se/):
 
 ```sh
 echo '{ "data": { "type": "Feature", "geometry": {"type": "Point", "coordinates": [13.37, 52.25]}, "properties": {"id": "truck"}}}' \
-      | http post http://localhost:8001/vehicle x-api-key:test
+      | http post http://localhost:8001/vehicles
 
-> {
-    "elapsed": "37.5µs",
-    "ok": true
-}
+> {data:"type":"Feature","geometry":{"type":"Point","coordinates":[13.37, 52.25]},"properties":{"id":"truck"}}
 
 
-http get http://localhost:8001/search/within lat==52.25 lon==13.37 radius==1000 \
-  x-api-key:test
+http get http://localhost:8001/vehicles/truck
 
-> {
-    "data": [
-        {
-            "id": "truck",
-            "object": {
-                "geometry": {
-                    "coordinates": [
-                        13.37,
-                        52.25
-                    ],
-                    "type": "Point"
-                },
-                "properties": {
-                    "id": "truck"
-                },
-                "type": "Feature"
-            }
-        }
-    ]
-}
+> {data:"type":"Feature","geometry":{"type":"Point","coordinates":[13.37, 52.25]},"properties":{"id":"truck"}}
+
+http get http://localhost:8001/vehicles
+
+> { data: ["type":"Feature","geometry":{"type": "Point", "coordinates": [13.37, 52.25]},"properties":{"id":"truck"}]}
 ```
 
 Or you use it with [httpx](https://www.python-httpx.org/)/[requests](https://docs.python-requests.org/en/master/):
@@ -125,52 +105,24 @@ vehicle = {
 
 # store a vehicle
 r = httpx.post(
-      url="http://localhost:8001/vehicle",
-      headers={"x-api-key":"test"},
+      url="http://localhost:8001/vehicles",
       json={"data": vehicle}
       )
 
 print(r.json())
+> { data: ["type":"Feature","geometry":{"type": "Point", "coordinates": [13.37, 52.25]},"properties":{"id":"truck"}]}
 
-> {
-    "elapsed": "70.8µs",
-    "ok": true
-}
-
-# get vehicle in a radius around a location
+# get a vehicle
 r = httpx.get(
-      url="http://localhost:8001/search/within",
-      headers={"x-api-key":"test"},
-      params={"lat":52.25,"lon":13.37,"radius":1000}
+      url="http://localhost:8001/vehicles/truck",
       )
 
 print(r.json())
 
-> {
-    "data": [
-        {
-            "id": "truck",
-            "object": {
-                "geometry": {
-                    "coordinates": [
-                        13.37,
-                        52.25
-                    ],
-                    "type": "Point"
-                },
-                "properties": {
-                    "id": "truck"
-                },
-                "type": "Feature"
-            }
-        }
-    ]
-}
+> {"data": {"type":"Feature","geometry": {"coordinates": [13.37,52.25],"type": "Point"},"properties": {"id": "truck"}}}
 ```
 
 You get the idea. And can use the rest.
-
-Inputs are being validated at runtime with [pydantic](https://pydantic-docs.helpmanual.io/).
 
 ## License
 
