@@ -10,8 +10,6 @@ ENV PYTHONUNBUFFERED 1
 
 # install dependencies
 RUN set -eux \
-    # && apt get --no-cache --virtual .build-deps build-base \
-    #     libressl-dev libffi-dev gcc musl-dev python3-dev curl openssl-dev cargo \
     && apt-get -y update \
     && apt-get -y upgrade \
     && apt-get -y install curl \
