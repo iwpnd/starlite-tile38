@@ -9,7 +9,7 @@ license = "MIT"
 python = "^3.8"
 starlite = "^0.6.0"
 uvicorn = "^0.17.0"
-pyle38 = "^0.6.0"
+pyle38 = "^0.6.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
