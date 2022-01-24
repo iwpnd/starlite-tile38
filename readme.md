@@ -59,15 +59,15 @@ application. Can be used as is, or be extended upon with other methods in the [p
     ```
 2. Setup environment
     ```sh
-    TODO
+    mv .env.dist .env
     ```
 3. Start your local stack
     ```python
-    docker-compose up
+    poe up
     ```
 4. Test it!
     ```sh
-    pytest . -vv -s
+    poe test
     ```
 
 ## Usage
