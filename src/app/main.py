@@ -1,5 +1,6 @@
 from starlite import MediaType, OpenAPIConfig, Starlite, get
 
+from app.controllers.search import SearchController
 from app.controllers.vehicles import VehicleController
 from app.services.tile38 import tile38
 
@@ -17,7 +18,7 @@ def health_check() -> str:
 
 
 app = Starlite(
-    route_handlers=[VehicleController, health_check],
+    route_handlers=[SearchController, VehicleController, health_check],
     openapi_config=OpenAPIConfig(title=f"{APP_NAME}", version="1.0.0"),
     on_shutdown=[shutdown_tile38],
 )
