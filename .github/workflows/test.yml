@@ -11,12 +11,12 @@ jobs:
     - name: Determine default branch
       run: |
         DEFAULT_BRANCH=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
-        echo "default_branch=$DEFAULT_BRANCH" >> $GITHUB_ENV
-        echo "default_branch_ref=refs/heads/$DEFAULT_BRANCH" >> $GITHUB_ENV
+        echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV
+        echo "DEFAULT_BRANCH_REF=refs/heads/$DEFAULT_BRANCH" >> $GITHUB_ENV
 
     - name: debug
-      run: echo ${{ env.default_branch }}
+      run: echo ${{ env.DEFAULT_BRANCH_REF}}
 
     - name: Deploy
-      if: github.ref == env.default_branch_ref
+      if: github.ref == env.DEFAULT_BRANCH_REF
       run: echo "Run!"
