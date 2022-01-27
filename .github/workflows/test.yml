@@ -26,6 +26,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Download default-branch artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: default-branch
+
     - name: restore branch from artifact
       run: echo "DEFAULT_BRANCH_REF=$(cat default-branch/default-branch.txt)" >> $GITHUB_ENV
 
