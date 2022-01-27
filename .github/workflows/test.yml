@@ -31,7 +31,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: test-ref
-        path: ${{ github.workspace }}//test-ref.txt
+        path: ${{ github.workspace }}/test-ref.txt
 
   debug:
     runs-on: ubuntu-latest
