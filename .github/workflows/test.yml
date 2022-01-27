@@ -12,8 +12,14 @@ jobs:
       run: |
         DEFAULT_BRANCH=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
         echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV
+        echo "DEFAULT_BRANCH_REF=refs/heads/$DEFAULT_BRANCH" >> $GITHUB_ENV
         echo "refs/heads/$DEFAULT_BRANCH" > ${{ github.workspace }}/default-branch.txt
         echo "test-ref-for-multiple-downloads" > ${{ github.workspace }}/test-ref.txt
+
+    - name: Debug
+      run: |
+        echo "$DEFAULT_BRANCH"
+        echo "$DEFAULT_BRANCH_REF"
 
     - name: Upload default-branch artifacts
       uses: actions/upload-artifact@v2
