@@ -13,13 +13,19 @@ jobs:
         DEFAULT_BRANCH=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
         echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV
         echo "refs/heads/$DEFAULT_BRANCH" > ${{ github.workspace }}/default-branch.txt
+        echo "test-ref-for-multiple-downloads" > ${{ github.workspace }}/test-ref.txt
 
-    - name: Upload build artifacts
+    - name: Upload default-branch artifacts
       uses: actions/upload-artifact@v2
       with:
         name: default-branch
         path: ${{ github.workspace }}/default-branch.txt
 
+    - name: Upload test-ref artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-ref
+        path: ${{ github.workspace }}//test-ref.txt
 
   debug:
     runs-on: ubuntu-latest
@@ -31,11 +37,20 @@ jobs:
       with:
         name: default-branch
 
+    - name: Download test-ref artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: test-ref
+
     - name: restore branch from artifact
-      run: echo "DEFAULT_BRANCH_REF=$(cat default-branch/default-branch.txt)" >> $GITHUB_ENV
+      run: |
+        echo "DEFAULT_BRANCH_REF=$(cat default-branch/default-branch.txt)" >> $GITHUB_ENV
+        echo "TEST_REF=$(cat test-ref/test-ref.txt)" >> $GITHUB_ENV
 
     - name: debug
-      run: echo ${{ env.DEFAULT_BRANCH_REF }}
+      run: |
+        echo ${{ env.DEFAULT_BRANCH_REF }}
+        echo ${{ env.TEST_REF }}
 
     - name: Deploy
       if: github.ref == env.DEFAULT_BRANCH_REF
