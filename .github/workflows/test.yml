@@ -15,7 +15,7 @@ jobs:
         echo "DEFAULT_BRANCH_REF=refs/heads/$DEFAULT_BRANCH" >> $GITHUB_ENV
 
     - name: debug
-      run: echo ${{ env.DEFAULT_BRANCH_REF}}
+      run: echo ${{ env.DEFAULT_BRANCH }}
 
     - name: Deploy
       if: github.ref == env.DEFAULT_BRANCH_REF
