@@ -1,0 +1,22 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Determine default branch
+      run: |
+        DEFAULT_BRANCH=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
+        echo "default_branch=$DEFAULT_BRANCH" >> $GITHUB_ENV
+        echo "default_branch_ref=refs/heads/$DEFAULT_BRANCH" >> $GITHUB_ENV
+
+    - name: debug
+      run: echo ${{ env.default_branch }}
+
+    - name: Deploy
+      if: github.ref == env.default_branch_ref
+      run: echo "Run!"
