@@ -21,7 +21,7 @@ poethepoet = "^0.12.2"
 isort = "^5.9.3"
 pytest-cov = "^3.0.0"
 flake8 = "^4.0.1"
-pytest-asyncio = "^0.17.2"
+pytest-asyncio = "^0.18.0"
 mypy = "^0.931"
 httpx = "^0.22.0"
 
