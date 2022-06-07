@@ -22,7 +22,7 @@ isort = "^5.9.3"
 pytest-cov = "^3.0.0"
 flake8 = "^4.0.1"
 pytest-asyncio = "^0.18.3"
-mypy = "^0.960"
+mypy = "^0.961"
 httpx = "^0.23.0"
 
 [build-system]
