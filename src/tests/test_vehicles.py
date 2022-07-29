@@ -31,7 +31,6 @@ async def test_get_vehicle_notfound(test_client: AsyncClient):
     assert response.status_code == status.HTTP_404_NOT_FOUND
     assert response.json() == {
         "detail": "vehicle with id 'banana' not found",
-        "extra": None,
         "status_code": 404,
     }
 
