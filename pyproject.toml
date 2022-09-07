@@ -10,7 +10,7 @@ python = "^3.8"
 starlite = "^1.17.1"
 uvicorn = "^0.18.3"
 pyle38 = "^0.6.1"
-pydantic = {extras = ["dotenv"], version = "^1.9.2"}
+pydantic = {extras = ["dotenv"], version = "^1.10.2"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1"
