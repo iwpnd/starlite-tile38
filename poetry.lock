@@ -705,21 +705,22 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "starlette"
-version = "0.17.1"
+version = "0.21.0"
 description = "The little ASGI library that shines."
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [package.dependencies]
-anyio = ">=3.0.0,<4"
+anyio = ">=3.4.0,<5"
+typing-extensions = {version = ">=3.10.0", markers = "python_version < \"3.10\""}
 
 [package.extras]
-full = ["itsdangerous", "jinja2", "python-multipart", "pyyaml", "requests"]
+full = ["httpx (>=0.22.0)", "itsdangerous", "jinja2", "python-multipart", "pyyaml"]
 
 [[package]]
 name = "starlite"
-version = "1.21.2"
+version = "1.24.0"
 description = "Light-weight and flexible ASGI API Framework"
 category = "main"
 optional = false
@@ -732,15 +733,15 @@ pydantic = "*"
 pydantic-factories = "*"
 pydantic-openapi-schema = "*"
 pyyaml = "*"
-starlette = "*"
+starlette = ">=0.21"
 starlite-multipart = "*"
 typing-extensions = "*"
 
 [package.extras]
 brotli = ["brotli"]
 cryptography = ["cryptography"]
-full = ["brotli", "cryptography", "requests"]
-testing = ["requests"]
+full = ["brotli", "cryptography", "httpx (>=0.22)"]
+testing = ["httpx (>=0.22)"]
 
 [[package]]
 name = "starlite-multipart"
@@ -829,7 +830,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "2095b18c48d119f3e865050fa4ef567e3ea835d25303ded5f3ea89afd535d009"
+content-hash = "d244b6ccc88af6e27a2ac53f480c5fb59c9d58e06452010826ca12134c9e9218"
 
 [metadata.files]
 anyio = [
@@ -1280,12 +1281,12 @@ sniffio = [
     {file = "sniffio-1.2.0.tar.gz", hash = "sha256:c4666eecec1d3f50960c6bdf61ab7bc350648da6c126e3cf6898d8cd4ddcd3de"},
 ]
 starlette = [
-    {file = "starlette-0.17.1-py3-none-any.whl", hash = "sha256:26a18cbda5e6b651c964c12c88b36d9898481cd428ed6e063f5f29c418f73050"},
-    {file = "starlette-0.17.1.tar.gz", hash = "sha256:57eab3cc975a28af62f6faec94d355a410634940f10b30d68d31cb5ec1b44ae8"},
+    {file = "starlette-0.21.0-py3-none-any.whl", hash = "sha256:0efc058261bbcddeca93cad577efd36d0c8a317e44376bcfc0e097a2b3dc24a7"},
+    {file = "starlette-0.21.0.tar.gz", hash = "sha256:b1b52305ee8f7cfc48cde383496f7c11ab897cd7112b33d998b1317dc8ef9027"},
 ]
 starlite = [
-    {file = "starlite-1.21.2-py3-none-any.whl", hash = "sha256:5d9b26e682b1f9826637e9b35af1e1775337162541e1ca3fd2eccafa008ed619"},
-    {file = "starlite-1.21.2.tar.gz", hash = "sha256:4dc1545a84f827f240779eca0d724723e597dad3327d6332d189a5fe4785d688"},
+    {file = "starlite-1.24.0-py3-none-any.whl", hash = "sha256:89772727bf0fb4b2ef4dee89e759ed34f9843eb5e2d85831c7bdbcf6660c5505"},
+    {file = "starlite-1.24.0.tar.gz", hash = "sha256:eaf624832ead68e87f884ec1770e7e58462ae620a276838dff5e5bf434ea4e31"},
 ]
 starlite-multipart = [
     {file = "starlite-multipart-1.1.0.tar.gz", hash = "sha256:bd5b25a614fadc237fe4da60f0c43c5e7d045a523d4e3685237047e1e228da87"},
