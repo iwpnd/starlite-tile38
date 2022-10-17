@@ -709,7 +709,7 @@ full = ["httpx (>=0.22.0)", "itsdangerous", "jinja2", "python-multipart", "pyyam
 
 [[package]]
 name = "starlite"
-version = "1.26.1"
+version = "1.28.1"
 description = "Light-weight and flexible ASGI API Framework"
 category = "main"
 optional = false
@@ -729,7 +729,9 @@ typing-extensions = "*"
 brotli = ["brotli"]
 cryptography = ["cryptography"]
 full = ["brotli", "cryptography", "httpx (>=0.22)", "picologging", "structlog"]
+memcached = ["aiomcache"]
 picologging = ["picologging"]
+redis = ["redis[hiredis]"]
 structlog = ["structlog"]
 testing = ["cryptography", "httpx (>=0.22)"]
 
@@ -820,7 +822,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "c0c74a712c95c8a1617794cfa8cd96b743b577d7f9bfe20d19cbdfe338480de4"
+content-hash = "55c99a38f753f176a78f1648fa33cdc514b08084e593fc3cbfef17696f9acfac"
 
 [metadata.files]
 anyio = [
@@ -1242,8 +1244,8 @@ starlette = [
     {file = "starlette-0.21.0.tar.gz", hash = "sha256:b1b52305ee8f7cfc48cde383496f7c11ab897cd7112b33d998b1317dc8ef9027"},
 ]
 starlite = [
-    {file = "starlite-1.26.1-py3-none-any.whl", hash = "sha256:59e5c3d3049841217e43c59c73375508dd1c79be20d2064993a4c61931a4deba"},
-    {file = "starlite-1.26.1.tar.gz", hash = "sha256:eea8b9916073a2020cc4d2e32adc38ec4b62f319cd3b8aecac9ac08ebd755e90"},
+    {file = "starlite-1.28.1-py3-none-any.whl", hash = "sha256:ad3650c0c308b865f16ab7c94610199e22b342f3e29f999ba18c96f90e339e43"},
+    {file = "starlite-1.28.1.tar.gz", hash = "sha256:fccb7fc371c290228229094e8702c25a4aaa9226867297454e0a7cf513154033"},
 ]
 starlite-multipart = [
     {file = "starlite-multipart-1.2.0.tar.gz", hash = "sha256:9ba2108cfd47de07240dc90e55397080ec9ca0c6992ec1097a02dd32ba4ca593"},
