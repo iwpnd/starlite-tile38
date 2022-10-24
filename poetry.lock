@@ -709,13 +709,14 @@ full = ["httpx (>=0.22.0)", "itsdangerous", "jinja2", "python-multipart", "pyyam
 
 [[package]]
 name = "starlite"
-version = "1.28.1"
+version = "1.32.0"
 description = "Light-weight and flexible ASGI API Framework"
 category = "main"
 optional = false
 python-versions = ">=3.7,<4.0"
 
 [package.dependencies]
+anyio = ">=3"
 orjson = "*"
 pydantic = "*"
 pydantic-factories = "*"
@@ -822,7 +823,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "55c99a38f753f176a78f1648fa33cdc514b08084e593fc3cbfef17696f9acfac"
+content-hash = "8163840717e35da98b1df582fbe756b5f7b1d7b5ec3c7d85c55144a0532d94c7"
 
 [metadata.files]
 anyio = [
@@ -1244,8 +1245,8 @@ starlette = [
     {file = "starlette-0.21.0.tar.gz", hash = "sha256:b1b52305ee8f7cfc48cde383496f7c11ab897cd7112b33d998b1317dc8ef9027"},
 ]
 starlite = [
-    {file = "starlite-1.28.1-py3-none-any.whl", hash = "sha256:ad3650c0c308b865f16ab7c94610199e22b342f3e29f999ba18c96f90e339e43"},
-    {file = "starlite-1.28.1.tar.gz", hash = "sha256:fccb7fc371c290228229094e8702c25a4aaa9226867297454e0a7cf513154033"},
+    {file = "starlite-1.32.0-py3-none-any.whl", hash = "sha256:0ea3c80e5837fbd0ead9ed5fa4ec57479b1090ef8c4c7e28153ea1fa99f6c8d1"},
+    {file = "starlite-1.32.0.tar.gz", hash = "sha256:634c571c3dd25344ac7088e4927d1580b478e42fe5d7f7714f1d8c9ca21124ba"},
 ]
 starlite-multipart = [
     {file = "starlite-multipart-1.2.0.tar.gz", hash = "sha256:9ba2108cfd47de07240dc90e55397080ec9ca0c6992ec1097a02dd32ba4ca593"},
