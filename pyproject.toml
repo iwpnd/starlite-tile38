@@ -13,7 +13,7 @@ pyle38 = "^0.7.0"
 pydantic = {extras = ["dotenv"], version = "^1.10.2"}
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.1"
+pytest = "^7.2"
 pre-commit = "^2.20.0"
 black = "^22.10"
 gitlint = "^0.17.0"
