@@ -705,27 +705,12 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
-name = "starlette"
-version = "0.21.0"
-description = "The little ASGI library that shines."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-anyio = ">=3.4.0,<5"
-typing-extensions = {version = ">=3.10.0", markers = "python_version < \"3.10\""}
-
-[package.extras]
-full = ["httpx (>=0.22.0)", "itsdangerous", "jinja2", "python-multipart", "pyyaml"]
-
-[[package]]
 name = "starlite"
-version = "1.38.0"
+version = "1.39.0"
 description = "Light-weight and flexible ASGI API Framework"
 category = "main"
 optional = false
-python-versions = ">=3.7,<4.0"
+python-versions = ">=3.8,<4.0"
 
 [package.dependencies]
 anyio = ">=3"
@@ -736,7 +721,6 @@ pydantic = "*"
 pydantic-factories = "*"
 pydantic-openapi-schema = "*"
 pyyaml = "*"
-starlette = ">=0.21"
 starlite-multipart = ">=1.2.0"
 typing-extensions = "*"
 
@@ -836,7 +820,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "8a37e2febe2495398f543020f1c4d6e649ccabae8f1b22f005e50f6133ad310f"
+content-hash = "4d434d23dec68950af4a1e18118c695d104b02661e0aa17eb6ecdb85af799fb7"
 
 [metadata.files]
 anyio = [
@@ -1320,13 +1304,9 @@ sniffio = [
     {file = "sniffio-1.2.0-py3-none-any.whl", hash = "sha256:471b71698eac1c2112a40ce2752bb2f4a4814c22a54a3eed3676bc0f5ca9f663"},
     {file = "sniffio-1.2.0.tar.gz", hash = "sha256:c4666eecec1d3f50960c6bdf61ab7bc350648da6c126e3cf6898d8cd4ddcd3de"},
 ]
-starlette = [
-    {file = "starlette-0.21.0-py3-none-any.whl", hash = "sha256:0efc058261bbcddeca93cad577efd36d0c8a317e44376bcfc0e097a2b3dc24a7"},
-    {file = "starlette-0.21.0.tar.gz", hash = "sha256:b1b52305ee8f7cfc48cde383496f7c11ab897cd7112b33d998b1317dc8ef9027"},
-]
 starlite = [
-    {file = "starlite-1.38.0-py3-none-any.whl", hash = "sha256:cae00ff06f00eff779a5bf6f75b238b07886e2ec287f8a0b9ef4dc088f561370"},
-    {file = "starlite-1.38.0.tar.gz", hash = "sha256:28b8ebe5a1bae98ab943cb022b11ebccffd8f5d91b066d8da48791733b5e4e1a"},
+    {file = "starlite-1.39.0-py3-none-any.whl", hash = "sha256:ad37842ebe4ff72284a172ee2335245d39fde8354e98b6e7988522572a0e96db"},
+    {file = "starlite-1.39.0.tar.gz", hash = "sha256:927706916151629661c4e9242b1385fec3ee64e1216f07709092f5f1fe7825e2"},
 ]
 starlite-multipart = [
     {file = "starlite-multipart-1.2.0.tar.gz", hash = "sha256:9ba2108cfd47de07240dc90e55397080ec9ca0c6992ec1097a02dd32ba4ca593"},
