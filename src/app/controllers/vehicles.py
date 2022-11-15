@@ -2,8 +2,8 @@ from typing import Optional
 
 from pyle38.errors import Tile38IdNotFoundError, Tile38KeyNotFoundError
 from pyle38.responses import ObjectResponse, ObjectsResponse
-from starlette.status import HTTP_201_CREATED, HTTP_404_NOT_FOUND
 from starlite import Controller, HTTPException, Parameter, get, post
+from starlite.status_codes import HTTP_201_CREATED, HTTP_404_NOT_FOUND
 
 from app.models.vehicle import (
     Vehicle,

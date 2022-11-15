@@ -1,7 +1,7 @@
 import pytest
 from httpx import AsyncClient
 from pyle38 import Tile38
-from starlette import status
+from starlite.status_codes import HTTP_200_OK, HTTP_201_CREATED, HTTP_404_NOT_FOUND
 
 key = "fleet"
 id = "truck1"
@@ -21,14 +21,14 @@ async def test_get_vehicle(test_client: AsyncClient, tile38: Tile38):
 
     response = await test_client.get(f"/vehicles/{id}")
 
-    assert response.status_code == status.HTTP_200_OK
+    assert response.status_code == HTTP_200_OK
 
 
 @pytest.mark.asyncio
 async def test_get_vehicle_notfound(test_client: AsyncClient):
     response = await test_client.get("/vehicles/banana")
 
-    assert response.status_code == status.HTTP_404_NOT_FOUND
+    assert response.status_code == HTTP_404_NOT_FOUND
     assert response.json() == {
         "detail": "vehicle with id 'banana' not found",
         "status_code": 404,
@@ -39,7 +39,7 @@ async def test_get_vehicle_notfound(test_client: AsyncClient):
 async def test_set_vehicle(test_client: AsyncClient, tile38: Tile38):
     post = await test_client.post("/vehicles", json={"data": feature})
 
-    assert post.status_code == status.HTTP_201_CREATED
+    assert post.status_code == HTTP_201_CREATED
 
     response = await tile38.get(key, id).asObject()
 

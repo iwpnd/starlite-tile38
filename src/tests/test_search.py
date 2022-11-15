@@ -1,7 +1,7 @@
 import pytest
 from httpx import AsyncClient
 from pyle38 import Tile38
-from starlette import status
+from starlite.status_codes import HTTP_200_OK
 
 key = "fleet"
 id = "truck1"
@@ -21,7 +21,7 @@ async def test_within_empty(test_client: AsyncClient):
         "/search", params={"lon": 1, "lat": 1, "radius": 1000}
     )
 
-    assert response.status_code == status.HTTP_200_OK
+    assert response.status_code == HTTP_200_OK
     assert response.json() == {"data": []}
 
 
@@ -33,7 +33,7 @@ async def test_within(test_client: AsyncClient, tile38: Tile38):
         "/search", params={"lon": lon, "lat": lat, "radius": 100}
     )
 
-    assert response.status_code == status.HTTP_200_OK
+    assert response.status_code == HTTP_200_OK
     assert response.json() == {"data": [feature]}
 
 
@@ -47,5 +47,5 @@ async def test_within_no_radius(test_client: AsyncClient, tile38: Tile38):
         "/search", params={"lon": lon, "lat": lat, "radius": 0}
     )
 
-    assert response.status_code == status.HTTP_200_OK
+    assert response.status_code == HTTP_200_OK
     assert response.json() == {"data": [feature]}
