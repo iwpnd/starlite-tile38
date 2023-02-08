@@ -1304,14 +1304,14 @@ files = [
 
 [[package]]
 name = "starlite"
-version = "1.50.1"
+version = "1.51.0"
 description = "Performant, light and flexible ASGI API Framework"
 category = "main"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "starlite-1.50.1-py3-none-any.whl", hash = "sha256:31d45efc805b895b9733b58825942129e55ebbbf8ddaeaf931b1237af5daae37"},
-    {file = "starlite-1.50.1.tar.gz", hash = "sha256:7cc30ace31c47c406666baff839e4dfa24e205855ef0fada011b9e1bbadda852"},
+    {file = "starlite-1.51.0-py3-none-any.whl", hash = "sha256:fe46288338e5ca519e81522f6b61b05f6afa86632c4907f6e714ce27c5803678"},
+    {file = "starlite-1.51.0.tar.gz", hash = "sha256:414983c43e2650f9f48b1cba5f929c9dbd3028a083c970595f3b69a169dc9c68"},
 ]
 
 [package.dependencies]
@@ -1499,4 +1499,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "ac43c262849effa27bb817d3e0b38ea349e6298e23485b5e7bf3ef0c88e1b2ae"
+content-hash = "4eda3c489855403f6f8d5fae587187eec64b75b637c0555ab7b239fda07fdeb2"
