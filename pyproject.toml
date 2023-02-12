@@ -6,7 +6,7 @@ authors = ["Benjamin Ramser <legionaerr@googlemail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 starlite = "^1.50.1"
 uvicorn = "^0.20.0"
 pyle38 = "^0.7.0"
