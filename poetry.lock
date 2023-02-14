@@ -1046,14 +1046,14 @@ files = [
 
 [[package]]
 name = "pyle38"
-version = "0.7.0"
+version = "0.8.1"
 description = "Async python client for Tile38"
 category = "main"
 optional = false
-python-versions = ">=3.8,<4.0"
+python-versions = ">=3.10,<4.0"
 files = [
-    {file = "pyle38-0.7.0-py3-none-any.whl", hash = "sha256:0473a711f63f16add81d571a83cf4880ebbffb42d4bde5e169993ffa3c72f23f"},
-    {file = "pyle38-0.7.0.tar.gz", hash = "sha256:6ff28f62617f7f6464f5cac963bb6f340b524af9f095a560a23293c1587b2ce3"},
+    {file = "pyle38-0.8.1-py3-none-any.whl", hash = "sha256:61aa2f4fe673248f7faf851c42910265d87b90177d94fbbf9641f2e64f2971fb"},
+    {file = "pyle38-0.8.1.tar.gz", hash = "sha256:a28692e4ce85f1285f27ba1f3618e20965493b6cac1f9a80cb4883aeb678c59f"},
 ]
 
 [package.dependencies]
@@ -1398,4 +1398,4 @@ test = ["covdefaults (>=2.2.2)", "coverage (>=7.1)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "3d3e8bb8ff242acb3de9da95d69f33a8708e79e6190514612206ac4022f632fd"
+content-hash = "50fb7fbff4a5d922c87c58baa22407d390722e32b11ee4453b8975f5e2a6b4fc"
