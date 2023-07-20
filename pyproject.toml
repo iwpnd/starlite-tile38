@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-starlite = "^1.51.12"
+starlite = "^1.51.13"
 uvicorn = "^0.23.1"
 pyle38 = "^0.9.1"
 pydantic = {extras = ["dotenv"], version = "^1.10.11"}
